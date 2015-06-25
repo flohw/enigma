@@ -7,5 +7,10 @@
             "email": "flohw@users.noreply.github.com"
         }
     ],
-    "require": {}
+    "require": {},
+    "autoload": {
+        "psr-0": {
+            "": "src/"
+        }
+    }
 }
