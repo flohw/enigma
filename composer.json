@@ -1,0 +1,11 @@
+{
+    "name": "Flohw/enigma",
+    "description": "Enigma machine in PHP",
+    "authors": [
+        {
+            "name": "Flohw",
+            "email": "flohw@users.noreply.github.com"
+        }
+    ],
+    "require": {}
+}
