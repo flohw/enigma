@@ -30,6 +30,20 @@ class Reflector extends AbstractIndexedAlphabet
         $this->checkWiring();
     }
 
+    /**
+     * Reflect an input letter
+     *
+     * @param string $letter
+     *
+     * @return string
+     */
+    public function reflect($letter)
+    {
+        $position = $this->charToInt($letter);
+
+        return $this->wires[$position];
+    }
+
     private function checkWiring()
     {
         foreach (range('A', 'Z') as $char) {
