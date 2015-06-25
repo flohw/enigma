@@ -29,4 +29,18 @@ class Plugboard
             $this->plugboard[$to] = $from;
         }
     }
+
+    /**
+     * Permute letter
+     *
+     * @param string $letter
+     *
+     * @return string
+     */
+    public function permute($letter)
+    {
+        $letter = strtoupper($letter);
+
+        return isset($this->plugboard[$letter]) ? $this->plugboard[$letter] : $letter;
+    }
 }
