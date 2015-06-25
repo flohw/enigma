@@ -7,7 +7,9 @@
             "email": "flohw@users.noreply.github.com"
         }
     ],
-    "require": {},
+    "require": {
+        "phpunit/phpunit": "4.0"
+    },
     "autoload": {
         "psr-0": {
             "": "src/"
