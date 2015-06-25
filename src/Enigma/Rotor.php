@@ -79,4 +79,18 @@ class Rotor extends AbstractIndexedAlphabet
 
         return $this->wiring[($this->position + $position) % 26];
     }
+
+    /**
+     * Decode the letter with the wiring
+     *
+     * @param string $letter
+     *
+     * @return string
+     */
+    public function decode($letter)
+    {
+        $position = (strpos($this->wiring, $letter) + $this->position) % 26;
+
+        return $this->intToChar($position);
+    }
 }
