@@ -93,4 +93,24 @@ class Rotor extends AbstractIndexedAlphabet
 
         return $this->intToChar($position);
     }
+
+    /**
+     * Get the current position
+     *
+     * @return string
+     */
+    public function getPosition()
+    {
+        return $this->intToChar($this->position);
+    }
+
+    /**
+     * Is the notch reached
+     *
+     * @return bool
+     */
+    public function isTurnover()
+    {
+        return $this->wiring[$this->position] == $this->notch;
+    }
 }
