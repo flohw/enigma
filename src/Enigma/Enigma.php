@@ -40,6 +40,36 @@ class Enigma
         $this->setPlugboard($plugboard);
     }
 
+    public function input($string)
+    {
+        $length = strlen($string);
+        $output  = '';
+
+        for ($i = 0; $i < $length; $i++) {
+            $char = $string[$i];
+            $this->rotateRotors();
+
+
+            $char = $this->plugboard->permute($char);
+            foreach (array_reverse($this->rotors) as $rotor) {
+                /** @var Rotor $rotor */
+                $char = $rotor->encode($char);
+            }
+
+            $char = $this->reflector->reflect($char);
+
+            foreach ($this->rotors as $rotor) {
+                $char = $rotor->decode($char);
+            }
+
+            $char = $this->plugboard->permute($char);
+
+            $output .= $char;
+        }
+
+        return $output;
+    }
+
     /**
      * Add a rotor to the machine
      *
