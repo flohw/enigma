@@ -23,7 +23,6 @@ class EnigmaTest extends \PHPUnit_Framework_TestCase
     {
         $enigma1 = new Enigma(
             array(
-                        //'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
                 new Rotor('EKMFLGDQVZNTOWYHXUSPAIBRCJ', 'Q', 'A'),
                 new Rotor('AJDKSIRUXBLHWTMCQGZNPYFVOE', 'E', 'A'),
                 new Rotor('BDFHJLCPRTXVZNYEIWGAKMUSQO', 'V', 'Z')
@@ -43,5 +42,36 @@ class EnigmaTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals('LYQOJ', $enigma1->input('HELLO'));
         $this->assertEquals('HELLO', $enigma2->input('LYQOJ'));
+    }
+
+    /**
+     * Test enigma encryption
+     *
+     * @covers Enigma::input
+     */
+    public function testInputWithNotch()
+    {
+        $enigma1 = new Enigma(
+            array(
+                        //'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
+                new Rotor('EKMFLGDQVZNTOWYHXUSPAIBRCJ', 'Q', 'A'),
+                new Rotor('AJDKSIRUXBLHWTMCQGZNPYFVOE', 'E', 'A'),
+                new Rotor('BDFHJLCPRTXVZNYEIWGAKMUSQO', 'V', 'K')
+            ),
+            new Reflector('EJMZALYXVBWFCRQUONTSPIKHGD'),
+            new Plugboard(array('A' => 'B', 'K' => 'P'))
+        );
+        $enigma2 = new Enigma(
+            array(
+                new Rotor('EKMFLGDQVZNTOWYHXUSPAIBRCJ', 'Q', 'A'),
+                new Rotor('AJDKSIRUXBLHWTMCQGZNPYFVOE', 'E', 'A'),
+                new Rotor('BDFHJLCPRTXVZNYEIWGAKMUSQO', 'V', 'K')
+            ),
+            new Reflector('EJMZALYXVBWFCRQUONTSPIKHGD'),
+            new Plugboard(array('A' => 'B', 'K' => 'P'))
+        );
+
+        $this->assertEquals('ALGIR', $enigma1->input('HELLO'));
+        $this->assertEquals('HELLO', $enigma2->input('ALGIR'));
     }
 }
