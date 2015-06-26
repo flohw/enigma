@@ -105,4 +105,35 @@ class EnigmaTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('ZJOVB', $enigma1->input('HELLO'));
         $this->assertEquals('HELLO', $enigma2->input('ZJOVB'));
     }
+
+    /**
+     * Test enigma encryption
+     *
+     * @covers Enigma::input
+     */
+    public function testInputWithTwoNotchesBis()
+    {
+        $enigma1 = new Enigma(
+            array(
+                        //'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
+                new Rotor('EKMFLGDQVZNTOWYHXUSPAIBRCJ', 'Q', 'A'),
+                new Rotor('AJDKSIRUXBLHWTMCQGZNPYFVOE', 'E', 'Z'),
+                new Rotor('BDFHJLCPRTXVZNYEIWGAKMUSQO', 'V', 'K')
+            ),
+            new Reflector('EJMZALYXVBWFCRQUONTSPIKHGD'),
+            new Plugboard(array('A' => 'B', 'K' => 'P'))
+        );
+        $enigma2 = new Enigma(
+            array(
+                new Rotor('EKMFLGDQVZNTOWYHXUSPAIBRCJ', 'Q', 'A'),
+                new Rotor('AJDKSIRUXBLHWTMCQGZNPYFVOE', 'E', 'Z'),
+                new Rotor('BDFHJLCPRTXVZNYEIWGAKMUSQO', 'V', 'K')
+            ),
+            new Reflector('EJMZALYXVBWFCRQUONTSPIKHGD'),
+            new Plugboard(array('A' => 'B', 'K' => 'P'))
+        );
+
+        $this->assertEquals('CKJRE', $enigma1->input('HELLO'));
+        $this->assertEquals('HELLO', $enigma2->input('CKJRE'));
+    }
 }
