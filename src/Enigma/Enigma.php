@@ -75,6 +75,46 @@ class Enigma
     }
 
     /**
+     * Set rotor's initial position
+     *
+     * @param string $position
+     * @throws \Exception
+     *
+     * @return $this
+     */
+    public function setRotorPosition($position)
+    {
+        $countRotors    = count($this->rotors);
+        $positionLength = strlen($position);
+
+        if ($positionLength !== $countRotors) {
+            throw new \Exception(sprintf(
+                'Initial position is invalid. %d positions defined, %d rotor present',
+                $positionLength,
+                $countRotors
+            ));
+        }
+
+        for ($i = $positionLength - 1; $i >= 0; $i--) {
+            $this->rotors[$i]->setPosition($position[$i]);
+        }
+
+        return $this;
+    }
+
+    public function getRotorPosition()
+    {
+        $position = '';
+
+        foreach (array_reverse($this->rotors) as $rotor) {
+            /** @var Rotor $rotor */
+            $position .= $rotor->getPosition();
+        }
+
+        return $position;
+    }
+
+    /**
      * Add a rotor to the machine
      *
      * @param Rotor $rotor

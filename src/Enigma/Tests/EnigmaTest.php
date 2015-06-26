@@ -53,7 +53,6 @@ class EnigmaTest extends \PHPUnit_Framework_TestCase
     {
         $enigma1 = new Enigma(
             array(
-                        //'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
                 new Rotor('EKMFLGDQVZNTOWYHXUSPAIBRCJ', 'Q', 'A'),
                 new Rotor('AJDKSIRUXBLHWTMCQGZNPYFVOE', 'E', 'A'),
                 new Rotor('BDFHJLCPRTXVZNYEIWGAKMUSQO', 'V', 'K')
@@ -84,7 +83,6 @@ class EnigmaTest extends \PHPUnit_Framework_TestCase
     {
         $enigma1 = new Enigma(
             array(
-                        //'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
                 new Rotor('EKMFLGDQVZNTOWYHXUSPAIBRCJ', 'Q', 'A'),
                 new Rotor('AJDKSIRUXBLHWTMCQGZNPYFVOE', 'E', 'Y'),
                 new Rotor('BDFHJLCPRTXVZNYEIWGAKMUSQO', 'V', 'K')
@@ -115,7 +113,6 @@ class EnigmaTest extends \PHPUnit_Framework_TestCase
     {
         $enigma1 = new Enigma(
             array(
-                        //'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
                 new Rotor('EKMFLGDQVZNTOWYHXUSPAIBRCJ', 'Q', 'A'),
                 new Rotor('AJDKSIRUXBLHWTMCQGZNPYFVOE', 'E', 'Z'),
                 new Rotor('BDFHJLCPRTXVZNYEIWGAKMUSQO', 'V', 'K')
@@ -146,7 +143,6 @@ class EnigmaTest extends \PHPUnit_Framework_TestCase
     {
         $enigma1 = new Enigma(
             array(
-                        //'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
                 new Rotor('EKMFLGDQVZNTOWYHXUSPAIBRCJ', 'Q', 'A'),
                 new Rotor('AJDKSIRUXBLHWTMCQGZNPYFVOE', 'E', 'Z'),
                 new Rotor('BDFHJLCPRTXVZNYEIWGAKMUSQO', 'V', 'K')
@@ -177,7 +173,6 @@ class EnigmaTest extends \PHPUnit_Framework_TestCase
     {
         $enigma1 = new Enigma(
             array(
-                        //'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
                 new Rotor('EKMFLGDQVZNTOWYHXUSPAIBRCJ', 'Q', 'A'),
                 new Rotor('VZBRGITYUPSDNHLXAWMJQOFECK', 'Z', 'A'),
                 new Rotor('BDFHJLCPRTXVZNYEIWGAKMUSQO', 'V', 'K')
@@ -197,5 +192,31 @@ class EnigmaTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals('NIHKNWQYSLNDRKNOQ', $enigma1->input('MYXSECRETXMESSAGE'));
         $this->assertEquals('MYXSECRETXMESSAGE', $enigma2->input('NIHKNWQYSLNDRKNOQ'));
+    }
+
+    /**
+     * Test enigma encryption
+     *
+     * @covers Enigma::setRotorPosition
+     */
+    public function testInitialPosition()
+    {
+        $enigma = new Enigma(
+            array(
+                new Rotor('EKMFLGDQVZNTOWYHXUSPAIBRCJ', 'Q', 'A'),
+                new Rotor('VZBRGITYUPSDNHLXAWMJQOFECK', 'Z', 'A'),
+                new Rotor('BDFHJLCPRTXVZNYEIWGAKMUSQO', 'V', 'K')
+            ),
+            new Reflector('EJMZALYXVBWFCRQUONTSPIKHGD'),
+            new Plugboard(array('A' => 'T', 'S' => 'J'))
+        );
+
+        $enigma->setRotorPosition('AAA');
+        $this->assertEquals('AAA', $enigma->getRotorPosition());
+
+        $enigma->setRotorPosition('AAK');
+        $this->assertEquals('AAK', $enigma->getRotorPosition());
+        $enigma->input('A');
+        $this->assertEquals('ABL', $enigma->getRotorPosition());
     }
 }
