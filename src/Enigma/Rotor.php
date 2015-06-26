@@ -35,8 +35,8 @@ class Rotor extends AbstractIndexedAlphabet
      */
     public function __construct($wiring, $notches, $position)
     {
-        $this->wiring  = $wiring;
-        $this->notches = is_array($notches) ? $notches : array($notches);
+        $this->wiring = $wiring;
+        $this->setNotches($notches);
         $this->setPosition($position);
     }
 
@@ -112,5 +112,19 @@ class Rotor extends AbstractIndexedAlphabet
     public function isTurnover()
     {
         return in_array($this->wiring[$this->position], $this->notches);
+    }
+
+    private function setNotches($notches)
+    {
+        if (is_array($notches)) {
+            $this->notches = $notches;
+        } elseif (is_string($notches)) {
+            $notchesLength = strlen($notches);
+            $this->notches = array();
+
+            for ($i = 0; $i < $notchesLength; $i++) {
+                $this->notches[] = $notches[$i];
+            }
+        }
     }
 }
