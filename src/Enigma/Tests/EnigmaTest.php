@@ -167,4 +167,35 @@ class EnigmaTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('CPSRE', $enigma1->input('HELLO'));
         $this->assertEquals('HELLO', $enigma2->input('CPSRE'));
     }
+
+    /**
+     * Test enigma encryption
+     *
+     * @covers Enigma::input
+     */
+    public function testInputWithDifferentRotor()
+    {
+        $enigma1 = new Enigma(
+            array(
+                        //'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
+                new Rotor('EKMFLGDQVZNTOWYHXUSPAIBRCJ', 'Q', 'A'),
+                new Rotor('VZBRGITYUPSDNHLXAWMJQOFECK', 'Z', 'A'),
+                new Rotor('BDFHJLCPRTXVZNYEIWGAKMUSQO', 'V', 'K')
+            ),
+            new Reflector('EJMZALYXVBWFCRQUONTSPIKHGD'),
+            new Plugboard(array('A' => 'T', 'S' => 'J'))
+        );
+        $enigma2 = new Enigma(
+            array(
+                new Rotor('EKMFLGDQVZNTOWYHXUSPAIBRCJ', 'Q', 'A'),
+                new Rotor('VZBRGITYUPSDNHLXAWMJQOFECK', 'Z', 'A'),
+                new Rotor('BDFHJLCPRTXVZNYEIWGAKMUSQO', 'V', 'K')
+            ),
+            new Reflector('EJMZALYXVBWFCRQUONTSPIKHGD'),
+            new Plugboard(array('A' => 'T', 'S' => 'J'))
+        );
+
+        $this->assertEquals('BKKMG', $enigma1->input('HELLO'));
+        $this->assertEquals('HELLO', $enigma2->input('BKKMG'));
+    }
 }
