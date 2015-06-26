@@ -97,4 +97,18 @@ class RotorTest extends \PHPUnit_Framework_TestCase
         $rotor->rotate();
         $this->assertEquals('U', $rotor->decode('N'));
     }
+
+    public function testRotorMultipleNotches()
+    {
+        $rotor1 = new Rotor('EKMFLGDQVZNTOWYHXUSPAIBRCJ', 'QB', 'G');
+        $this->assertFalse($rotor1->isTurnover());
+        $rotor1->rotate();
+        $this->assertTrue($rotor1->isTurnover());
+
+        $rotor2 = new Rotor('EKMFLGDQVZNTOWYHXUSPAIBRCJ', ['Q', 'B'], 'M');
+        $rotor2->setPosition('V');
+        $this->assertFalse($rotor2->isTurnover());
+        $rotor2->rotate();
+        $this->assertTrue($rotor2->isTurnover());
+    }
 }
