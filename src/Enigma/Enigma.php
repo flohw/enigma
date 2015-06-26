@@ -46,13 +46,17 @@ class Enigma
         $output  = '';
 
         for ($i = 0; $i < $length; $i++) {
+            $rotateNext = true;
             $char = $string[$i];
-            $this->rotateRotors();
 
 
             $char = $this->plugboard->permute($char);
             foreach (array_reverse($this->rotors) as $rotor) {
                 /** @var Rotor $rotor */
+                if (true === $rotateNext) {
+                    $rotor->rotate();
+                    $rotateNext = $rotor->isTurnover();
+                }
                 $char = $rotor->encode($char);
             }
 
@@ -118,18 +122,5 @@ class Enigma
         $this->plugboard = $plugboard;
 
         return $this;
-    }
-
-    private function rotateRotors()
-    {
-        $rotateNext = true;
-
-        foreach (array_reverse($this->rotors) as $rotor) {
-            /** @var Rotor $rotor */
-            if (true === $rotateNext) {
-                $rotor->rotate();
-                $rotateNext = $rotor->isTurnover();
-            }
-        }
     }
 }
