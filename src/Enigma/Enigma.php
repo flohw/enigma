@@ -89,4 +89,17 @@ class Enigma
 
         return $this;
     }
+
+    private function rotateRotors()
+    {
+        $rotateNext = true;
+
+        foreach (array_reverse($this->rotors) as $rotor) {
+            /** @var Rotor $rotor */
+            if (true === $rotateNext) {
+                $rotor->rotate();
+                $rotateNext = $rotor->isTurnover();
+            }
+        }
+    }
 }
