@@ -40,8 +40,8 @@ class EnigmaTest extends \PHPUnit_Framework_TestCase
             new Plugboard(array('A' => 'B', 'K' => 'P'))
         );
 
-        $this->assertEquals('LYQOJ', $enigma1->input('HELLO'));
-        $this->assertEquals('HELLO', $enigma2->input('LYQOJ'));
+        $this->assertEquals('GEDUWGKBIDOGKVDNX', $enigma1->input('MYXSECRETXMESSAGE'));
+        $this->assertEquals('MYXSECRETXMESSAGE', $enigma2->input('GEDUWGKBIDOGKVDNX'));
     }
 
     /**
@@ -71,8 +71,8 @@ class EnigmaTest extends \PHPUnit_Framework_TestCase
             new Plugboard(array('A' => 'B', 'K' => 'P'))
         );
 
-        $this->assertEquals('ALGIR', $enigma1->input('HELLO'));
-        $this->assertEquals('HELLO', $enigma2->input('ALGIR'));
+        $this->assertEquals('FZYKJWOHZVOSUZKDH', $enigma1->input('MYXSECRETXMESSAGE'));
+        $this->assertEquals('MYXSECRETXMESSAGE', $enigma2->input('FZYKJWOHZVOSUZKDH'));
     }
 
     /**
@@ -102,8 +102,8 @@ class EnigmaTest extends \PHPUnit_Framework_TestCase
             new Plugboard(array('A' => 'B', 'K' => 'P'))
         );
 
-        $this->assertEquals('ZJOVB', $enigma1->input('HELLO'));
-        $this->assertEquals('HELLO', $enigma2->input('ZJOVB'));
+        $this->assertEquals('UGFZHULASUFLGXINW', $enigma1->input('MYXSECRETXMESSAGE'));
+        $this->assertEquals('MYXSECRETXMESSAGE', $enigma2->input('UGFZHULASUFLGXINW'));
     }
 
     /**
@@ -133,8 +133,8 @@ class EnigmaTest extends \PHPUnit_Framework_TestCase
             new Plugboard(array('A' => 'B', 'K' => 'P'))
         );
 
-        $this->assertEquals('CKJRE', $enigma1->input('HELLO'));
-        $this->assertEquals('HELLO', $enigma2->input('CKJRE'));
+        $this->assertEquals('PQKYOXJGNUQMXDJMY', $enigma1->input('MYXSECRETXMESSAGE'));
+        $this->assertEquals('MYXSECRETXMESSAGE', $enigma2->input('PQKYOXJGNUQMXDJMY'));
     }
 
     /**
@@ -164,8 +164,8 @@ class EnigmaTest extends \PHPUnit_Framework_TestCase
             new Plugboard(array('A' => 'T', 'S' => 'J'))
         );
 
-        $this->assertEquals('CPSRE', $enigma1->input('HELLO'));
-        $this->assertEquals('HELLO', $enigma2->input('CPSRE'));
+        $this->assertEquals('KQPHOXSGKUQMPNOMY', $enigma1->input('MYXSECRETXMESSAGE'));
+        $this->assertEquals('MYXSECRETXMESSAGE', $enigma2->input('KQPHOXSGKUQMPNOMY'));
     }
 
     /**
@@ -195,7 +195,7 @@ class EnigmaTest extends \PHPUnit_Framework_TestCase
             new Plugboard(array('A' => 'T', 'S' => 'J'))
         );
 
-        $this->assertEquals('BKKMG', $enigma1->input('HELLO'));
-        $this->assertEquals('HELLO', $enigma2->input('BKKMG'));
+        $this->assertEquals('NIHKNWQYSLNDRKNOQ', $enigma1->input('MYXSECRETXMESSAGE'));
+        $this->assertEquals('MYXSECRETXMESSAGE', $enigma2->input('NIHKNWQYSLNDRKNOQ'));
     }
 }
