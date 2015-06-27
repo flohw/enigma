@@ -35,7 +35,9 @@ class Rotor extends AbstractIndexedAlphabet
      */
     public function __construct($wiring, $notches, $position)
     {
-        $this->wiring = $wiring;
+        $this->wiring   = $wiring;
+        $this->position = 0;
+
         $this->setNotches($notches);
         $this->setPosition($position);
     }
