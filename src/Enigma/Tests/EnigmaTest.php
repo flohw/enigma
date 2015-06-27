@@ -216,7 +216,10 @@ class EnigmaTest extends \PHPUnit_Framework_TestCase
 
         $enigma->setRotorPosition('AAK');
         $this->assertEquals('AAK', $enigma->getRotorPosition());
-        $enigma->input('A');
-        $this->assertEquals('ABL', $enigma->getRotorPosition());
+        $cipherA = $enigma->input('A');
+        $this->assertEquals('BBL', $enigma->getRotorPosition());
+
+        $this->assertEquals($cipherA, $enigma->setRotorPosition('AAK')->input('A'));
+        $this->assertEquals('A', $enigma->setRotorPosition('AAK')->input($cipherA));
     }
 }
