@@ -49,7 +49,6 @@ class Enigma
             $rotateNext = true;
             $char = $string[$i];
 
-
             $char = $this->plugboard->permute($char);
             foreach (array_reverse($this->rotors) as $rotor) {
                 /** @var Rotor $rotor */
@@ -95,8 +94,9 @@ class Enigma
             ));
         }
 
-        for ($i = $positionLength - 1; $i >= 0; $i--) {
-            $this->rotors[$i]->setPosition($position[$i]);
+        foreach ($this->rotors as $k => $rotor) {
+            /** @var Rotor $rotor */
+            $rotor->setPosition($position[$k]);
         }
 
         return $this;
@@ -106,7 +106,7 @@ class Enigma
     {
         $position = '';
 
-        foreach (array_reverse($this->rotors) as $rotor) {
+        foreach ($this->rotors as $rotor) {
             /** @var Rotor $rotor */
             $position .= $rotor->getPosition();
         }
