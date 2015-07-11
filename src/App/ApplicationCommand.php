@@ -34,7 +34,7 @@ class ApplicationCommand extends Command
     {
         $string = $input->getArgument('string');
 
-        $this->enigma
+        $cipher = $this->enigma
             ->addRotor(new Rotor('EKMFLGDQVZNTOWYHXUSPAIBRCJ', 'Q', 'A'))
             ->addRotor(new Rotor('AJDKSIRUXBLHWTMCQGZNPYFVOE', 'E', 'A'))
             ->addRotor(new Rotor('BDFHJLCPRTXVZNYEIWGAKMUSQO', 'V', 'Z'))
@@ -42,6 +42,8 @@ class ApplicationCommand extends Command
             ->setReflector(new Reflector('EJMZALYXVBWFCRQUONTSPIKHGD'))
             ->setRotorPosition($this->rotorPosition($input, $output))
             ->input($string);
+
+        $output->writeln(sprintf('<info>%s</info>', $cipher));
     }
 
     private function rotorPosition(InputInterface $input, OutputInterface $output)
