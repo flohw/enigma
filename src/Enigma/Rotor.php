@@ -2,15 +2,17 @@
 
 namespace Enigma;
 
-use Enigma\Component\AbstractIndexedAlphabet;
+use Enigma\Component\IndexedAlphabetTrait;
 
 /**
  * Class Rotor
  *
  * @package Enigma
  */
-class Rotor extends AbstractIndexedAlphabet
+class Rotor
 {
+    use IndexedAlphabetTrait;
+
     /**
      * @var string[]
      */

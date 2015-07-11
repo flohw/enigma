@@ -2,15 +2,17 @@
 
 namespace Enigma;
 
-use Enigma\Component\AbstractIndexedAlphabet;
+use Enigma\Component\IndexedAlphabetTrait;
 
 /**
  * Class Reflector
  *
  * @package Enigma
  */
-class Reflector extends AbstractIndexedAlphabet
+class Reflector
 {
+    use IndexedAlphabetTrait;
+
     /**
      * @var string
      */
