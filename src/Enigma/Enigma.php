@@ -163,4 +163,14 @@ class Enigma
 
         return $this;
     }
+
+    /**
+     * Count number of rotor in this enigma
+     *
+     * @return int
+     */
+    public function getRotorCount()
+    {
+        return count($this->rotors);
+    }
 }
