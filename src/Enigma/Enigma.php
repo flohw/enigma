@@ -44,6 +44,7 @@ class Enigma
     {
         $length = strlen($string);
         $output  = '';
+        $countEncodedLetter = 0;
 
         for ($i = 0; $i < $length; $i++) {
             $rotateNext = true;
@@ -70,8 +71,12 @@ class Enigma
             }
 
             $char = $this->plugboard->permute($char);
+            $countEncodedLetter++;
 
             $output .= $char;
+            if ($countEncodedLetter % 5 == 0) {
+                $output .= ' ';
+            }
         }
 
         return $output;
