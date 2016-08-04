@@ -47,6 +47,10 @@ class Enigma
 
         for ($i = 0; $i < $length; $i++) {
             $rotateNext = true;
+            if ($string[$i] == ' ') {
+                continue;
+            }
+
             $char = $string[$i];
 
             $char = $this->plugboard->permute($char);
