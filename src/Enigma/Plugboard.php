@@ -21,7 +21,7 @@ class Plugboard
      *
      * @param string[] $plugboard
      */
-    public function __construct(array $plugboard = array())
+    public function __construct(array $plugboard = [])
     {
         if (count($plugboard) > 20) {
             throw new \Exception('Plugboard can not be longer than 20 permutation');

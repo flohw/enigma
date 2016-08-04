@@ -31,7 +31,7 @@ class Enigma
      * @param null|Reflector $reflector
      * @param null|Plugboard $plugboard
      */
-    public function __construct(array $rotors = array(), $reflector = null, $plugboard = null)
+    public function __construct(array $rotors = [], $reflector = null, $plugboard = null)
     {
         foreach ($rotors as $rotor) {
             $this->addRotor($rotor);

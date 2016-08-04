@@ -17,7 +17,7 @@ class Rotor extends AbstractIndexedAlphabet
     private $wiring;
 
     /**
-     * @var string|string[]
+     * @var string[]
      */
     private $notches;
 
@@ -122,7 +122,7 @@ class Rotor extends AbstractIndexedAlphabet
             $this->notches = $notches;
         } elseif (is_string($notches)) {
             $notchesLength = strlen($notches);
-            $this->notches = array();
+            $this->notches = [];
 
             for ($i = 0; $i < $notchesLength; $i++) {
                 $this->notches[] = $notches[$i];
