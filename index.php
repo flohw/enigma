@@ -18,4 +18,4 @@ $enigma2
     ->setPlugboard(new \Enigma\Plugboard(['A' => 'T', 'S' => 'J']))
     ->setReflector(new \Enigma\Reflector('EJMZALYXVBWFCRQUONTSPIKHGD'));
 
-echo $enigma2->input($enigma1->input('MYXSECRETXMESSAGE')) . "\n";
+echo $enigma2->input($enigma1->input('MY SECRET MESSAGE')) . "\n";
