@@ -6,6 +6,9 @@ use App\ApplicationCommand;
 
 use Symfony\Component\Console\Application;
 
-$application = new Application();
-$application->add(new ApplicationCommand());
+$application = new Application('enigma', '1.0.0');
+$command = new ApplicationCommand();
+
+$application->add($command);
+$application->setDefaultCommand($command->getName(), true);
 $application->run();
