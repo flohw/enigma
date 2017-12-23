@@ -7,7 +7,7 @@ namespace Enigma\Component;
  *
  * @package Enigma\Component
  */
-abstract class AbstractIndexedAlphabet implements IndexedAlphabetInterface
+trait IndexedAlphabetTrait
 {
     /**
      * {@inheritDoc}
