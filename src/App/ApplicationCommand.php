@@ -58,7 +58,10 @@ class ApplicationCommand extends Command
         return strtoupper($position);
     }
 
-    protected function initialize()
+    /**
+     * {@inheritdoc}
+     */
+    protected function initialize(InputInterface $input, OutputInterface $output)
     {
         $this->question = $this->getHelperSet()->get('question');
         $this->enigma   = new Enigma();
